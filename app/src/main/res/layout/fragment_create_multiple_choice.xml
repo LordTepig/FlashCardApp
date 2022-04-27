@@ -4,26 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CreateFlashCardFragment"
-    android:background="#FB5E15">
+    tools:context=".CreateMultipleChoiceFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:id="@+id/flashCardQuestionText"
-        android:layout_width="match_parent"
+        android:id="@+id/multipleChoiceQuestionTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question"
+        android:layout_marginTop="100dp"
         android:textStyle="bold"
         android:textColor="#2943FF"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="200dp"
         android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <EditText
-        android:id="@+id/flashCardQuestionEditText"
+        android:id="@+id/multipleChoiceQuestionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -31,34 +29,36 @@
         android:hint="@string/your_question"
         android:paddingStart="24dp"
         android:textColorHint="#2943FF"
-        app:layout_constraintTop_toBottomOf="@id/flashCardQuestionText"
-        app:layout_constraintStart_toStartOf="@id/flashCardQuestionText"
+        app:layout_constraintStart_toStartOf="@id/multipleChoiceQuestionTextView"
+        app:layout_constraintTop_toBottomOf="@id/multipleChoiceQuestionTextView"
         />
 
     <TextView
-        android:id="@+id/answer"
-        android:layout_width="match_parent"
+        android:id="@+id/multipleChoiceAnswerOneTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/answer"
-        android:textSize="40sp"
         android:textStyle="bold"
         android:textColor="#2943FF"
         android:layout_marginStart="12dp"
-        app:layout_constraintTop_toBottomOf="@id/flashCardQuestionEditText"
-        app:layout_constraintStart_toStartOf="@id/flashCardQuestionText"/>
+        android:textSize="40sp"
+        app:layout_constraintTop_toBottomOf="@id/multipleChoiceQuestionEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <EditText
-        android:id="@+id/answerEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/your_answer"
-        android:autofillHints="@string/your_answer"
+        android:id="@+id/multipleChoiceAnswerOneEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:inputType="text"
-        android:paddingStart="24dp"
+        android:autofillHints="@string/question"
+        android:hint="@string/your_answer"
         android:textColorHint="#2943FF"
-        app:layout_constraintStart_toStartOf="@id/flashCardQuestionEditText"
-        app:layout_constraintTop_toBottomOf="@id/answer"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toTopOf="@id/multipleChoiceAnswerOneTextView"
+        app:layout_constraintStart_toEndOf="@id/multipleChoiceAnswerOneTextView"
+        app:layout_constraintBottom_toBottomOf="@id/multipleChoiceAnswerOneTextView"/>
 
-        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
