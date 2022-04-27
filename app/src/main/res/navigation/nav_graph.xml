@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.flashcardapp.HomeFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_homeFragment_to_createFlashCardFragment"
+            app:destination="@id/createFlashCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFlashCardFragment"
+        android:name="com.example.flashcardapp.CreateFlashCardFragment"
+        android:label="fragment_create_flash_card"
+        tools:layout="@layout/fragment_create_flash_card" />
+</navigation>
