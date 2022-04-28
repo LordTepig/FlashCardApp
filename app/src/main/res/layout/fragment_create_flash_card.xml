@@ -58,7 +58,17 @@
         android:textColorHint="#2943FF"
         app:layout_constraintStart_toStartOf="@id/flashCardQuestionEditText"
         app:layout_constraintTop_toBottomOf="@id/answer"
+        />
 
+    <Button
+        android:id="@+id/addFlashCardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_flash_card"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/answerEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

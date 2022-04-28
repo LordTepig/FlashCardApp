@@ -13,10 +13,42 @@
         <action
             android:id="@+id/action_homeFragment_to_createFlashCardFragment"
             app:destination="@id/createFlashCardFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createMultipleChoiceFragment"
+            app:destination="@id/createMultipleChoiceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_createTrueFalseFragment"
+            app:destination="@id/createTrueFalseFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_studyCardsFragment"
+            app:destination="@id/studyCardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/createFlashCardFragment"
         android:name="com.example.flashcardapp.CreateFlashCardFragment"
         android:label="fragment_create_flash_card"
         tools:layout="@layout/fragment_create_flash_card" />
+    <fragment
+        android:id="@+id/createMultipleChoiceFragment"
+        android:name="com.example.flashcardapp.CreateMultipleChoiceFragment"
+        android:label="fragment_create_multiple_choice"
+        tools:layout="@layout/fragment_create_multiple_choice" >
+        <action
+            android:id="@+id/action_createMultipleChoiceFragment_to_studyCardsFragment"
+            app:destination="@id/studyCardsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createTrueFalseFragment"
+        android:name="com.example.flashcardapp.CreateTrueFalseFragment"
+        android:label="fragment_create_true_false"
+        tools:layout="@layout/fragment_create_true_false" />
+    <fragment
+        android:id="@+id/studyCardsFragment"
+        android:name="com.example.flashcardapp.StudyCardsFragment"
+        android:label="fragment_study_cards"
+        tools:layout="@layout/fragment_study_cards" >
+        <argument
+            android:name="answerArgs"
+            app:argType="integer" />
+    </fragment>
 </navigation>
