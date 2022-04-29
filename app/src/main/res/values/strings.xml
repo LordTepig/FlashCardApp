@@ -12,4 +12,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="your_answer">Your Answer</string>
     <string name="add_flash_card">Add Flash Card</string>
+    <string name="add_to_cards">Add to cards</string>
+    <string name="true_answer">true</string>
+    <string name="false_answer">false</string>
 </resources>

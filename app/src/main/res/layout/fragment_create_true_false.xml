@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FB5E15"
     tools:context=".CreateTrueFalseFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    android:id="@+id/trueFalseQuestionText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/question"
+    android:textStyle="bold"
+    android:textColor="#2943FF"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="200dp"
+    android:textSize="40sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/flashCardQuestionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="@string/question"
+        android:hint="@string/your_question"
+        android:paddingStart="24dp"
+        android:textColorHint="#2943FF"
+        app:layout_constraintTop_toBottomOf="@id/trueFalseQuestionText"
+        app:layout_constraintStart_toStartOf="@id/trueFalseQuestionText"
+        />
+
+    <Button
+        android:id="@+id/trueAnswerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/true_answer"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flashCardQuestionEditText"
+        />
+
+    <Button
+        android:id="@+id/falseAnswerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/false_answer"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trueAnswerButton"
+       app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
