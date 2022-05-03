@@ -1,4 +1,4 @@
 package com.example.flashcardapp
 
-data class Question (val Question: String, val answer: String) {
+data class Question (val question: String, val answer: String) {
 }

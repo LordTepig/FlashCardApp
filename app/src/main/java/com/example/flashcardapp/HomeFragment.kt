@@ -33,7 +33,7 @@ class HomeFragment : Fragment() {
             rootView.findNavController().navigate(action)
         }
         binding.studyCurrentQuestions.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToStudyCardsFragment(0)
+            val action = HomeFragmentDirections.actionHomeFragmentToStudyCardsFragment("","")
             rootView.findNavController().navigate(action)
         }
         return rootView
