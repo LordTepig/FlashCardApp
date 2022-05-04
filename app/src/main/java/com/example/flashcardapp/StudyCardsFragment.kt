@@ -14,7 +14,6 @@ class StudyCardsFragment : Fragment() {
     private var _binding: FragmentStudyCardsBinding? = null
     private val binding get() = _binding!!
 
-    val questions  = mutableListOf<Question>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,15 +24,16 @@ class StudyCardsFragment : Fragment() {
 
         val args = StudyCardsFragmentArgs.fromBundle(requireArguments())
         val ques = Question(args.questionArg, args.answerArg)
-        questions.add(ques) //default question
+        viewModel.addQuestion(ques) //adds the question and answer passed through navigation to the mutable list
 
-        val adapter = QuestionAdapter(questions)
+        val adapter = QuestionAdapter(viewModel.questions)
         binding.recyclerView.adapter = adapter
 
         binding.returnHomeButton.setOnClickListener {
             val action = StudyCardsFragmentDirections.actionStudyCardsFragmentToHomeFragment()
             rootView.findNavController().navigate(action)
         }
+
         return rootView
     }
 

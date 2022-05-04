@@ -7,4 +7,8 @@ class QuestionViewModel: ViewModel() {
     val questions: MutableList<Question>
         get() = _questions
 
+    fun addQuestion(question: Question){
+        _questions.add(question)
+    }
+
 }
