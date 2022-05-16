@@ -21,7 +21,14 @@ class CreateTrueFalseFragment : Fragment() {
     ): View? {
         _binding = FragmentCreateTrueFalseBinding.inflate(inflater, container, false)
         val rootView = binding.root
-
+        val question = binding.trueFalseQuestionEditText.text.toString()
+        var answer:String
+        binding.trueAnswerButton.setOnClickListener {
+            answer = "true"
+        }
+        binding.falseAnswerButton.setOnClickListener {
+            answer = "false"
+        }
         return rootView
     }
 

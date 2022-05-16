@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentStudyCardsBinding
 
 class StudyCardsFragment : Fragment() {
-    private val viewModel: QuestionViewModel by viewModels()
+    private val viewModel: QuestionViewModel by activityViewModels()
     private var _binding: FragmentStudyCardsBinding? = null
     private val binding get() = _binding!!
 

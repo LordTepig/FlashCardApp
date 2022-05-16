@@ -15,4 +15,22 @@
     <string name="add_to_cards">Add to cards</string>
     <string name="true_answer">true</string>
     <string name="false_answer">false</string>
+    <string name="correct_answer">Correct Answer:</string>
+    <string name="answer_a">Answer (A) :</string>
+    <string name="answer_b">Answer (B) :</string>
+    <string name="answer_d">Answer (D) :</string>
+    <string name="answer_c">Answer (C) :</string>
+    <string name="answer">Answer:</string>
+
+    <string-array name="correct_answers_MC_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+    </string-array>
+
+    <string-array name="correct_answers_true_false_array">
+        <item>TRUE</item>
+        <item>FALSE</item>
+    </string-array>
 </resources>

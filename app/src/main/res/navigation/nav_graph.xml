@@ -60,5 +60,20 @@
         <action
             android:id="@+id/action_studyCardsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_studyCardsFragment_to_flashCardFragment"
+            app:destination="@id/flashCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flashCardFragment"
+        android:name="com.example.flashcardapp.FlashCardFragment"
+        android:label="fragment_flash_card"
+        tools:layout="@layout/fragment_flash_card" >
+        <argument
+            android:name="questionArg"
+            app:argType="string" />
+        <argument
+            android:name="answerArg"
+            app:argType="string" />
     </fragment>
 </navigation>
