@@ -45,7 +45,11 @@
         android:id="@+id/createTrueFalseFragment"
         android:name="com.example.flashcardapp.CreateTrueFalseFragment"
         android:label="fragment_create_true_false"
-        tools:layout="@layout/fragment_create_true_false" />
+        tools:layout="@layout/fragment_create_true_false" >
+        <action
+            android:id="@+id/action_createTrueFalseFragment_to_studyCardsFragment"
+            app:destination="@id/studyCardsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studyCardsFragment"
         android:name="com.example.flashcardapp.StudyCardsFragment"

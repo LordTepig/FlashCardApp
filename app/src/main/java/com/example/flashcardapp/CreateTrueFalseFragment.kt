@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentCreateFlashCardBinding
 import com.example.flashcardapp.databinding.FragmentCreateMultipleChoiceBinding
 import com.example.flashcardapp.databinding.FragmentCreateTrueFalseBinding
@@ -21,13 +22,20 @@ class CreateTrueFalseFragment : Fragment() {
     ): View? {
         _binding = FragmentCreateTrueFalseBinding.inflate(inflater, container, false)
         val rootView = binding.root
-        val question = binding.trueFalseQuestionEditText.text.toString()
-        var answer:String
+
+        lateinit var answer:String
         binding.trueAnswerButton.setOnClickListener {
-            answer = "true"
+            binding.currentTrueFalseAnswerTextView.text = "true"
+            answer = "TRUE"
         }
         binding.falseAnswerButton.setOnClickListener {
-            answer = "false"
+            binding.currentTrueFalseAnswerTextView.text = "false"
+            answer = "FALSE"
+        }
+        binding.addTrueFalseCardButton.setOnClickListener {
+            val question = binding.trueFalseQuestionEditText.text.toString()
+            val action = CreateTrueFalseFragmentDirections.actionCreateTrueFalseFragmentToStudyCardsFragment(question, answer)
+            rootView.findNavController().navigate(action)
         }
         return rootView
     }

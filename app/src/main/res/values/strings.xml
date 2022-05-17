@@ -20,7 +20,6 @@
     <string name="answer_b">Answer (B) :</string>
     <string name="answer_d">Answer (D) :</string>
     <string name="answer_c">Answer (C) :</string>
-    <string name="answer">Answer:</string>
 
     <string-array name="correct_answers_MC_array">
         <item>A</item>
