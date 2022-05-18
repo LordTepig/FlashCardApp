@@ -20,6 +20,8 @@
     <string name="answer_b">Answer (B) :</string>
     <string name="answer_d">Answer (D) :</string>
     <string name="answer_c">Answer (C) :</string>
+    <string name="no_question">Please type in a question</string>
+    <string name="no_answer">Please type in an answer</string>
 
     <string-array name="correct_answers_MC_array">
         <item>A</item>
