@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentCreateMultipleChoiceBinding
 import com.example.flashcardapp.databinding.FragmentMainBinding
@@ -43,13 +44,28 @@ class CreateMultipleChoiceFragment : Fragment() {
                 correctAnswer = selectedAnswer
             }
             override fun onNothingSelected(adapterView: AdapterView<*>?) {
-
+                correctAnswer = "A"
             }
         }
         binding.addMultipleChoiceCardButton.setOnClickListener {
+            if(binding.multipleChoiceQuestionEditText.text.toString() == ""){
+                Toast.makeText(context, R.string.no_question, Toast.LENGTH_LONG).show()
+            }
             question = binding.multipleChoiceQuestionEditText.text.toString()
-            val action = CreateMultipleChoiceFragmentDirections.actionCreateMultipleChoiceFragmentToStudyCardsFragment(question, correctAnswer)
-            rootView.findNavController().navigate(action)
+            when (correctAnswer){
+                "A" -> correctAnswer = binding.multipleChoiceAnswerOneEditText.text.toString()
+                "B" -> correctAnswer = binding.multipleChoiceQuestionTwoEditText.text.toString()
+                "C" -> correctAnswer = binding.multipleChoiceQuestionThreeEditText.text.toString()
+                "D" -> correctAnswer = binding.multipleChoiceQuestionFourEditText.text.toString()
+            }
+            if ((correctAnswer == "") && (question != "")) {
+                Toast.makeText(context, R.string.no_answer, Toast.LENGTH_LONG).show()
+            }
+            if((question != "")&& (correctAnswer != "")){
+                val action = CreateMultipleChoiceFragmentDirections.actionCreateMultipleChoiceFragmentToStudyCardsFragment(question, correctAnswer)
+                rootView.findNavController().navigate(action)
+            }
+
         }
         return rootView
     }

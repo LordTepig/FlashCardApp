@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentCreateFlashCardBinding
 import com.example.flashcardapp.databinding.FragmentMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class CreateFlashCardFragment : Fragment() {
@@ -39,10 +40,10 @@ class CreateFlashCardFragment : Fragment() {
             }
             else{
                 if(binding.flashCardQuestionEditText.text.toString() == "") {
-                    Toast.makeText(context, R.string.no_question, Toast.LENGTH_LONG).show()
+                    Snackbar.make(binding.myCoordinatorLayout,R.string.no_question, Snackbar.LENGTH_LONG).show()
                 }
                 else if(binding.answerEditText.text.toString() == ""){
-                    Toast.makeText(context, R.string.no_answer, Toast.LENGTH_LONG).show()
+                    Snackbar.make(binding.myCoordinatorLayout,R.string.no_answer, Snackbar.LENGTH_LONG).show()
                 }
             }
         }
