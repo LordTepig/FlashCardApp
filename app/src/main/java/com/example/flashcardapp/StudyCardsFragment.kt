@@ -24,8 +24,10 @@ class StudyCardsFragment : Fragment() {
         val rootView = binding.root
 
         val args = StudyCardsFragmentArgs.fromBundle(requireArguments())
-        val ques = Question(args.questionArg, args.answerArg)
-        viewModel.addQuestion(ques) //adds the question and answer passed through navigation to the mutable list
+        if((args.questionArg != "") && (args.answerArg != "")){ //checks that there is not a blank question or answer
+            val ques = Question(args.questionArg, args.answerArg)
+            viewModel.addQuestion(ques)   //adds the question and answer passed through navigation to the mutable list
+        }
 
         val adapter = QuestionAdapter(viewModel.questions)
         binding.recyclerView.adapter = adapter

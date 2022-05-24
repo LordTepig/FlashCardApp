@@ -9,16 +9,20 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentCreateMultipleChoiceBinding
 import com.example.flashcardapp.databinding.FragmentMainBinding
+import kotlinx.coroutines.selects.select
 
 
 class CreateMultipleChoiceFragment : Fragment() {
     private var _binding: FragmentCreateMultipleChoiceBinding? = null
     private val binding get() = _binding!!
-    lateinit var correctAnswer: String
+    private val viewModel: QuestionViewModel by activityViewModels()
     lateinit var question: String
+    lateinit var correctAnswer: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +39,12 @@ class CreateMultipleChoiceFragment : Fragment() {
 
         correctAnswerMCAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         MCSpinner.adapter = correctAnswerMCAdapter
+        val answerObserver = Observer<String> { newAnswer->
+            correctAnswer = newAnswer
+        }
+
+        viewModel.answer.observe(viewLifecycleOwner, answerObserver)
+
 
         MCSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             var selectedAnswer = ""
@@ -42,9 +52,11 @@ class CreateMultipleChoiceFragment : Fragment() {
             override fun onItemSelected(adapterView: AdapterView<*>, childView: View?, position: Int, itemId: Long) {
                 selectedAnswer = adapterView.getItemAtPosition(position).toString()
                 correctAnswer = selectedAnswer
+                viewModel.answer.setValue(selectedAnswer)
+                viewModel.answer.observe(viewLifecycleOwner, answerObserver)
             }
             override fun onNothingSelected(adapterView: AdapterView<*>?) {
-                correctAnswer = "A"
+                viewModel.answer.setValue("A")
             }
         }
         binding.addMultipleChoiceCardButton.setOnClickListener {
@@ -52,17 +64,19 @@ class CreateMultipleChoiceFragment : Fragment() {
                 Toast.makeText(context, R.string.no_question, Toast.LENGTH_LONG).show()
             }
             question = binding.multipleChoiceQuestionEditText.text.toString()
+
             when (correctAnswer){
-                "A" -> correctAnswer = binding.multipleChoiceAnswerOneEditText.text.toString()
-                "B" -> correctAnswer = binding.multipleChoiceQuestionTwoEditText.text.toString()
-                "C" -> correctAnswer = binding.multipleChoiceQuestionThreeEditText.text.toString()
-                "D" -> correctAnswer = binding.multipleChoiceQuestionFourEditText.text.toString()
+                "A" ->  viewModel.answer.setValue(binding.multipleChoiceAnswerOneEditText.text.toString())
+                "B" ->  viewModel.answer.setValue(binding.multipleChoiceQuestionTwoEditText.text.toString())
+                "C" ->  viewModel.answer.setValue(binding.multipleChoiceQuestionThreeEditText.text.toString())
+                "D" ->  viewModel.answer.setValue(binding.multipleChoiceQuestionFourEditText.text.toString())
             }
-            if ((correctAnswer == "") && (question != "")) {
+
+            if (((viewModel.answer.value.toString() == "") ) && (question != "")) {
                 Toast.makeText(context, R.string.no_answer, Toast.LENGTH_LONG).show()
             }
-            if((question != "")&& (correctAnswer != "")){
-                val action = CreateMultipleChoiceFragmentDirections.actionCreateMultipleChoiceFragmentToStudyCardsFragment(question, correctAnswer)
+            if((question != "")&& (viewModel.answer.value != "")){
+                val action = CreateMultipleChoiceFragmentDirections.actionCreateMultipleChoiceFragmentToStudyCardsFragment(question, viewModel.answer.value.toString())
                 rootView.findNavController().navigate(action)
             }
 
