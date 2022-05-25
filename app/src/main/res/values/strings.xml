@@ -22,7 +22,8 @@
     <string name="answer_c">Answer (C) :</string>
     <string name="no_question">Please type in a question</string>
     <string name="no_answer">Please type in an answer</string>
-    <string name= "no_true_false_answer">Please select an answer</string>
+    <string name="no_true_false_answer">Please select an answer</string>
+    <string name="add_to_card">Add to Card</string>
 
     <string-array name="correct_answers_MC_array">
         <item>A</item>

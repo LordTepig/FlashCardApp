@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentFlashCardBinding
 import com.example.flashcardapp.databinding.FragmentStudyCardsBinding
 
@@ -33,6 +34,10 @@ class FlashCardFragment : Fragment() {
             else if (text == answer){ //change the text from answer to question when clicked (answer -> question)
                 binding.flashCardTextView.text = question
             }
+        }
+        binding.flashCardPhotoCameraButton.setOnClickListener{
+            val action = FlashCardFragmentDirections.actionFlashCardFragmentToCameraFragment()
+            rootView.findNavController().navigate(action)
         }
         return rootView
     }
