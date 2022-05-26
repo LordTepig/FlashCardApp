@@ -7,6 +7,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FlashCardFragment">
 
+    <ImageView
+        android:id="@+id/flashCardPhotoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@id/flashCardTextView"
+        />
     <TextView
         android:id="@+id/flashCardTextView"
         android:layout_width="wrap_content"

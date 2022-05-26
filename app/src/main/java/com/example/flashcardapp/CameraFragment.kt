@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentCameraBinding
 import com.example.flashcardapp.databinding.FragmentCreateTrueFalseBinding
@@ -20,6 +22,7 @@ class CameraFragment : Fragment() {
     private var _binding: FragmentCameraBinding? = null
     private val binding get() = _binding!!
     private val REQUEST_IMAGE_CAPTURE = 1
+    private lateinit var imageBitmap: Bitmap
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +33,14 @@ class CameraFragment : Fragment() {
         // Inflate the layout for this fragment
         launchCamera()
         binding.addImageToQuestionButton.setOnClickListener {
+            setFragmentResult("requestKey", bundleOf("bundleKey" to imageBitmap))
             rootView.findNavController().navigateUp()
         }
         return rootView
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
+            imageBitmap = data?.extras?.get("data") as Bitmap
             binding.cameraImageView.setImageBitmap(imageBitmap)
         }
     }

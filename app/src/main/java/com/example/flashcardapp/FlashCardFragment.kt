@@ -1,10 +1,12 @@
 package com.example.flashcardapp
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.findNavController
 import com.example.flashcardapp.databinding.FragmentFlashCardBinding
 import com.example.flashcardapp.databinding.FragmentStudyCardsBinding
@@ -38,6 +40,10 @@ class FlashCardFragment : Fragment() {
         binding.flashCardPhotoCameraButton.setOnClickListener{
             val action = FlashCardFragmentDirections.actionFlashCardFragmentToCameraFragment()
             rootView.findNavController().navigate(action)
+        }
+        setFragmentResultListener("requestKey"){ requestKey, bundle ->
+            val result = bundle.get("bundleKey")
+            binding.flashCardPhotoImageView.setImageBitmap(result as Bitmap)
         }
         return rootView
     }
